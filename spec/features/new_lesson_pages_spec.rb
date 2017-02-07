@@ -7,7 +7,7 @@ describe "adding a new lesson" do
     fill_in 'Title', :with => 'Ruby Basics'
     fill_in 'Content', :with => 'Ruby is kewlllllio.'
     fill_in 'Number', :with => 2
-    click_on 'Create Lesson'
+    click_on 'Add Lesson'
     expect(page).to have_content 'Lessons'
   end
 end
