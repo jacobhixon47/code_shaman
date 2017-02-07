@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Lesson</h1>
+
+      <ul>
+        <% @lessons.each do |lesson| %>
+        <li><%= link_to lesson.title, lesson_path(lesson) %></li>
+        <% end %>
+      </ul>
+
+      <hr>
+
+      <%= link_to "New Lesson", new_lesson_path %>
+
+    </div>
+  </div>
+</div>

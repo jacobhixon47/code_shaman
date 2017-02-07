@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= @lesson.title %></h1>
+    <p><%= @lesson.content %></p>
+
+    <p><%= link_to "Return to lessons", lessons_path %></p>
+    <p><%= link_to "Edit", edit_lesson_path(@lesson) %></p>
+    <p><%= link_to "Delete", lesson_path(@lesson),
+                              :data => {:confirm => "You sure?",
+                                        :method => "delete"} %></p>
+  </div>
+</div>
