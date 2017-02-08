@@ -12,16 +12,29 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(lessons_params)
+    @lesson = Lesson.new(lesson_params)
     if @lesson.save
-      redirect_to lessons_path
+      redirect_to lesson_path(@lesson)
     else
       render :new
     end
   end
 
+  def edit
+    @lesson = Lesson.find(params[:id])
+  end
+
+  def update
+  @lesson = Lesson.find(params[:id])
+  if @lesson.update(lesson_params)
+    redirect_to lesson_path(@lesson)
+  else
+    render :edit
+  end
+end
+
 private
-  def lessons_params
+  def lesson_params
     params.require(:lesson).permit(:title, :content, :number)
   end
 end
