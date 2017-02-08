@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
+      flash[:notice] = "Your lesson has been successfully added!"
       redirect_to lesson_path(@lesson)
     else
       render :new
@@ -25,13 +26,21 @@ class LessonsController < ApplicationController
   end
 
   def update
-  @lesson = Lesson.find(params[:id])
-  if @lesson.update(lesson_params)
-    redirect_to lesson_path(@lesson)
-  else
-    render :edit
+    @lesson = Lesson.find(params[:id])
+    if @lesson.update(lesson_params)
+      flash[:notice] = "The selected lesson has been updated!"
+      redirect_to lesson_path(@lesson)
+    else
+      render :edit
+    end
   end
-end
+
+  def destroy
+    @lesson = Lesson.find(params[:id])
+    @lesson.destroy
+    flash[:notice] = "The selected lesson has been successfully deleted!"
+    redirect_to lessons_path
+  end
 
 private
   def lesson_params
